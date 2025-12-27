@@ -1,0 +1,15 @@
+<h1>Hola a todos desde {{city}} en {{country}}</h1>
+
+<h4>Lista de tareas - usando ngFor</h4>
+<ul>
+  <li *ngFor="let tareita of tasks">
+    {{tareita}}
+  </li>
+</ul>
+
+<h4>Lista de frutas - usando for </h4>
+<ul>
+  @for (frutita of fruits; track $index) {
+    <li>{{ $index }} - {{ frutita }}</li>
+  }
+</ul>
