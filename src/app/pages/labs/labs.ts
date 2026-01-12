@@ -35,4 +35,22 @@ export class Labs {
     escudo: "https://i.pinimg.com/originals/c4/6b/71/c46b71490cb2abe51cbe10e6fd48e19a.jpg",
     estadio: "OldTrafford"
   }
+
+  clickHandler = ()=>{
+    alert("Usted ha hecho un click")
+  }
+
+  dclickHandler = ()=>{
+    alert("Usted ha hecho un DOBLE click")
+  }
+
+  changeHandler = (event: Event)=>{
+
+    console.log(event)
+
+    const inputElement = event.target as HTMLInputElement
+
+    console.log(inputElement.value)
+
+  }
 }
