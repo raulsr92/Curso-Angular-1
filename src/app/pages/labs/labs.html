@@ -41,3 +41,17 @@
   <input type="text" name="" id="" (change)="changeHandler($event)">
 </div>
 
+<!--Clase 7: Eventos "keydown"-->
+
+<div class="mini-container">
+  <label for="apellido">Ingrese su Apellido:</label>
+  <input type="text" name="" id="apellido" (keydown)="keyDownHandler($event)" >
+</div>
+
+
+<div class="mini-container">
+  <label for="correo">Ingrese su correo:</label>
+  <input type="text" name="" id="correo" (keydown.enter)="keyEnterDown()" >
+</div>
+
+

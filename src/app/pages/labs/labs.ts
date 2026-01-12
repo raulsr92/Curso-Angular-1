@@ -45,12 +45,25 @@ export class Labs {
   }
 
   changeHandler = (event: Event)=>{
+    console.log(event)
+    const inputElement = event.target as HTMLInputElement
+    console.log(inputElement.value)
+  }
+
+  keyDownHandler = (event: KeyboardEvent)=>{
 
     console.log(event)
 
-    const inputElement = event.target as HTMLInputElement
+    console.log(`Se ha disparado la tecla ${event.key}`)
 
-    console.log(inputElement.value)
+    const htmlElement = event.target as HTMLInputElement
 
+    console.log(`Valor almacenado:  ${htmlElement.value}`)
+
+  }
+
+
+  keyEnterDown = () =>{
+    console.log("Presionó enter")
   }
 }
