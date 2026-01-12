@@ -25,3 +25,9 @@
   outline: 1px solid blue;
   padding: 6px 20px;
 }
+
+span{
+    color: rgb(36, 21, 255);
+    font-weight: 600;
+
+}

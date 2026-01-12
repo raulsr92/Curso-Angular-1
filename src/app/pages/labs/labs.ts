@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -8,6 +8,11 @@ import { CommonModule } from '@angular/common';
   styleUrl: './labs.css',
 })
 export class Labs {
+
+  /*Variable con Signals*/
+  firstName = signal("Raul Adolfo")
+
+
   miNombre = "RaulSanz"
   city = 'Lima';
   country = "Peru"
@@ -26,8 +31,6 @@ export class Labs {
   disabledButton= false
 
   rutaImg = "https://images.pexels.com/photos/30367164/pexels-photo-30367164.jpeg"
-
-
 
   /*Creación de un objeto literal*/
   englandTeam = {
@@ -65,5 +68,14 @@ export class Labs {
 
   keyEnterDown = () =>{
     console.log("Presionó enter")
+  }
+
+  actualizarInput = (event:Event) =>{
+
+    console.log(event)
+
+    const inputElement = event.target as HTMLInputElement
+
+    this.firstName.set(inputElement.value)
   }
 }
