@@ -22,8 +22,12 @@ export class Labs {
     "Pera",
     "Naranja"
   ]
+
   disabledButton= false
+
   rutaImg = "https://images.pexels.com/photos/30367164/pexels-photo-30367164.jpeg"
+
+
 
   /*Creación de un objeto literal*/
   englandTeam = {
