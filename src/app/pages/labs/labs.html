@@ -7,10 +7,24 @@
   </li>
 </ul>
 
+<h4>Lista de TAREAS - usando for y signals </h4>
+
+<ul>
+  @for (tareita of tasks2(); track $index) {
+
+    <li> <span>{{$index+1}}</span>  {{tareita}}</li>
+  }
+</ul>
+
+<span>N° de tareas:  {{ tasks2().length}}</span>
+
+
+
 <h4>Lista de frutas - usando for </h4>
+
 <ul>
   @for (frutita of fruits; track $index) {
-    <li>{{ $index }} - {{ frutita }}</li>
+    <li>{{ $index +1 }} - {{ frutita }}</li>
   }
 </ul>
 

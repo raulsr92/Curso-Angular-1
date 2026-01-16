@@ -16,11 +16,19 @@ export class Labs {
   miNombre = "RaulSanz"
   city = 'Lima';
   country = "Peru"
-  tasks = [
+
+tasks = [
     "Instalar Angular CLI",
     "Crear proyecto",
     "Crear componentes"
-  ]
+  ];
+
+
+  tasks2 = signal([
+    "Instalar Angular CLI",
+    "Crear proyecto",
+    "Crear componentes"
+  ]);
 
   fruits = [
     "Manzana",

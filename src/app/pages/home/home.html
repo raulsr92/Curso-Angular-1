@@ -15,6 +15,19 @@
     <!-- This section should be hidden by default and shown when there are todos -->
     <section class="main">
       <ul class="todo-list">
+        @for (tareita of tasks2(); track $index){
+          <li>
+            <div class="view">
+              <input class="toggle" type="checkbox" />
+              <label>{{tareita}}</label>
+              <button class="destroy"></button>
+            </div>
+            <input class="edit" [value]="tareita" />
+          </li>
+        }
+
+        <!--
+
         <li class="completed">
           <div class="view">
             <input class="toggle" type="checkbox" checked />
@@ -23,6 +36,7 @@
           </div>
           <input class="edit" value="Learn JavaScript" />
         </li>
+
         <li>
           <div class="view">
             <input class="toggle" type="checkbox" />
@@ -31,6 +45,7 @@
           </div>
           <input class="edit" value="Buy a unicorn" />
         </li>
+
         <li class="editing">
           <div class="view">
             <input class="toggle" type="checkbox" />
@@ -39,6 +54,7 @@
           </div>
           <input class="edit" value="Make dishes" />
         </li>
+        -->
       </ul>
     </section>
     <!-- This footer should be hidden by default and shown when there are todos -->
