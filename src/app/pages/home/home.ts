@@ -65,6 +65,7 @@ export class Home {
   }
 
 
+
   deleteTask = (index: number) =>{
 
     // Eliminar la tarea
@@ -72,4 +73,21 @@ export class Home {
      this.tasks2.update((array) => array.filter((item, posicion)=> posicion !== index))
 
   }
+
+  changeCheck = (event: Event, index: number) =>{
+
+    console.log(event)
+
+    const inputElement = event.target as HTMLInputElement
+    const statusChecked = inputElement.checked
+
+    this.tasks2.update((array)=>
+      array.map((tarea, indice) =>
+        indice == index ? { ...tarea, completed: statusChecked } : tarea
+
+      ) )
+
+    console.log(this.tasks2())
+  }
 }
+

@@ -19,7 +19,7 @@
         @for (tareita of tasks2(); track $index){
           <li>
             <div class="view">
-              <input class="toggle" type="checkbox" />
+              <input class="toggle" type="checkbox" (click)="changeCheck($event, $index)" />
               <label>{{tareita.title}}</label>
               <button class="destroy" (click)="deleteTask($index)"></button>
             </div>
