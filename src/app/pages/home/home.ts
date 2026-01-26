@@ -1,5 +1,7 @@
 import { Component, signal } from '@angular/core';
 
+import { Task } from '../../models/task.models';
+
 @Component({
   selector: 'app-home',
   imports: [],
@@ -8,11 +10,27 @@ import { Component, signal } from '@angular/core';
 })
 export class Home {
 
-  tasks2 = signal([
-    "Instalar Angular CLI",
-    "Crear proyecto",
-    "Crear componentes",
-    "Añadir signals"
+  tasks2 = signal<Task[]>([
+    {
+      id: Date.now(),
+      title: "Instalar Angular CLI",
+      completed: false
+    },
+    {
+      id: Date.now(),
+      title: "Crear proyecto",
+      completed: false
+    },
+    {
+      id: Date.now(),
+      title: "Crear componentes",
+      completed: false
+    },
+        {
+      id: Date.now(),
+      title: "Añadir signals",
+      completed: false
+    }
   ]);
 
 
@@ -27,13 +45,25 @@ export class Home {
 
     // Agregar tarea al array de tareas (recuerda que es signal)
 
-    this.tasks2.update((array)=> [...array,newTask] )
+    this.addTask(newTask)
 
     // Limpiar input
 
     inputElement.value= ""
 
   }
+
+  addTask = (title:string) =>{
+
+    const newTask: Task = {
+      id: Date.now(),
+      title: title,
+      completed: false
+    }
+
+    this.tasks2.update((array)=> [...array,newTask] )
+  }
+
 
   deleteTask = (index: number) =>{
 
