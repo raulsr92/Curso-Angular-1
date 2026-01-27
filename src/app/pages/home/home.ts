@@ -1,10 +1,10 @@
 import { Component, signal } from '@angular/core';
-
+import { CommonModule } from '@angular/common';
 import { Task } from '../../models/task.models';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
@@ -64,6 +64,16 @@ export class Home {
     this.tasks2.update((array)=> [...array,newTask] )
   }
 
+  updateTask = (index: number, statusChecked: boolean) =>{
+
+    this.tasks2.update((array)=>
+      array.map((tarea, indice) =>
+        indice == index ? { ...tarea, completed: statusChecked } : tarea
+
+      ) )
+
+  }
+
 
 
   deleteTask = (index: number) =>{
@@ -81,11 +91,9 @@ export class Home {
     const inputElement = event.target as HTMLInputElement
     const statusChecked = inputElement.checked
 
-    this.tasks2.update((array)=>
-      array.map((tarea, indice) =>
-        indice == index ? { ...tarea, completed: statusChecked } : tarea
+    //Actualizar tarea
 
-      ) )
+    this.updateTask(index, statusChecked)
 
     console.log(this.tasks2())
   }
