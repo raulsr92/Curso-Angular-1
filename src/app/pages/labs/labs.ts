@@ -17,6 +17,9 @@ export class Labs {
   city = 'Lima';
   country = "Peru"
 
+  number1 = 23;
+  number2 = 34
+
 tasks = [
     "Instalar Angular CLI",
     "Crear proyecto",
@@ -41,11 +44,14 @@ tasks = [
   rutaImg = "https://images.pexels.com/photos/30367164/pexels-photo-30367164.jpeg"
 
   /*Creación de un objeto literal*/
-  englandTeam = {
+
+  englandTeam = signal({
     name: "Manchester United",
     escudo: "https://i.pinimg.com/originals/c4/6b/71/c46b71490cb2abe51cbe10e6fd48e19a.jpg",
-    estadio: "OldTrafford"
-  }
+    estadio: "OldTrafford",
+    country: "Inglaterra",
+    championsLeague: 3
+  })
 
   clickHandler = ()=>{
     alert("Usted ha hecho un click")
@@ -85,5 +91,32 @@ tasks = [
     const inputElement = event.target as HTMLInputElement
 
     this.firstName.set(inputElement.value)
+  }
+
+
+  actualizarEquipo = (event:Event) =>{
+
+    console.log(event)
+
+    const inputElement = event.target as HTMLInputElement
+    console.log(inputElement.value)
+
+    const newValue = inputElement.value
+    console.log(inputElement.id)
+
+
+      switch (inputElement.id) {
+        case"pais":
+            this.englandTeam.update( (equipo)=> ({...equipo, country:newValue}))
+          break;
+        case"equipo":
+            this.englandTeam.update((equipo) => ({...equipo, name: newValue }))
+          break;
+
+        case "copas":
+            this.englandTeam.update((equipo) => ({...equipo, championsLeague: parseInt(newValue,10) }))
+          break;
+      }
+
   }
 }

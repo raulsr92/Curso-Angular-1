@@ -40,9 +40,9 @@
 
 <div style="display: flex; flex-direction: column; width: 20%; background-color: rgb(207, 205, 205); justify-content: center; align-items: center; border-radius: 10px; margin-top: 10px;">
   <h2 style="color: black;">Mi equipo preferido</h2>
-  <p style="font-weight: 800;">{{englandTeam.name}}</p>
-  <img [src]="englandTeam.escudo" alt="" style="width: 15%; border-radius: 50%;">
-  <p style="font-weight: 400;">Juego de Local en <span style="color: red; font-weight: 700;">{{englandTeam.estadio}}</span> </p>
+  <p style="font-weight: 800;">{{englandTeam().name}}</p>
+  <img [src]="englandTeam().escudo" alt="" style="width: 15%; border-radius: 50%;">
+  <p style="font-weight: 400;">Juego de Local en <span style="color: red; font-weight: 700;">{{englandTeam().estadio}}</span> </p>
 </div>
 
 <!--Clase 6-->
@@ -81,3 +81,39 @@
 
   <p>Nombre ingresado por la cajita de texto: {{firstName()}}</p>
 </div>
+
+<!--Clase 12: Uso de ngIf y ngFor para control de flujos en Angular  -->
+
+@if (number2 > number1) {
+
+  <div>
+    Por favor llene sus datos
+  </div>
+
+}
+
+@if ( firstName() == "Raul Adolfo"){
+
+  <p> El nombre <span> {{firstName()}} </span> es el correcto </p>
+}
+
+<h3>Formulario para actualizacion de if y else</h3>
+
+  <label for="equipo">Equipo</label>
+  <input id="equipo" type="text" [value]="englandTeam().name" (change)="actualizarEquipo($event)">
+  <label for="pais">País</label>
+  <input id="pais" type="text" [value]="englandTeam().country" (change)="actualizarEquipo($event)">
+  <label for="copas">N° Champions League</label>
+  <input id="copas" type="number" [value]="englandTeam().championsLeague" (change)="actualizarEquipo($event)">
+
+
+@if (englandTeam().country == "Inglaterra" && englandTeam().championsLeague>0){
+
+  <p>El <span>{{englandTeam().name}}</span> es Inglés y ha ganado almenos 1 vez la Champios League</p>
+
+} @else {
+
+  <p>El {{englandTeam().name}} no es Inglés o no ha ganado la Champios League</p>
+}
+
+

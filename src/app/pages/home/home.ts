@@ -74,8 +74,6 @@ export class Home {
 
   }
 
-
-
   deleteTask = (index: number) =>{
 
     // Eliminar la tarea
