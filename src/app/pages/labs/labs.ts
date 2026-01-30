@@ -107,7 +107,8 @@ tasks = [
 
       switch (inputElement.id) {
         case"pais":
-            this.englandTeam.update( (equipo)=> ({...equipo, country:newValue}))
+            this.englandTeam.update( (equipo)=>{
+              return {...equipo, country:newValue} })
           break;
         case"equipo":
             this.englandTeam.update((equipo) => ({...equipo, name: newValue }))
