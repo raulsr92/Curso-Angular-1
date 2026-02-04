@@ -18,7 +18,9 @@ export class Labs {
   country = "Peru"
 
   number1 = 23;
-  number2 = 34
+  number2 = 34;
+
+  edad = signal(18);
 
 tasks = [
     "Instalar Angular CLI",
@@ -120,4 +122,18 @@ tasks = [
       }
 
   }
+
+  actualizarEdad = (event:Event) =>{
+
+        const inputElement = event.target as HTMLInputElement  //capturamos el input text de la edad
+
+        console.log(inputElement.value)
+
+        // Actualizar edad
+
+        this.edad.set(parseInt(inputElement.value))
+
+  }
+
+
 }

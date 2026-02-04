@@ -28,6 +28,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 300;
+  margin-bottom: 70px;
+  margin-left: 15px;
 }
 
 :focus {

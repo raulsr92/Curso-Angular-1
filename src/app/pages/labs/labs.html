@@ -83,6 +83,7 @@
 </div>
 
 <!--Clase 12: Uso de ngIf y ngFor para control de flujos en Angular  -->
+<!-- Uso de @if-->
 
 @if (number2 > number1) {
 
@@ -91,6 +92,8 @@
   </div>
 
 }
+
+
 
 @if ( firstName() == "Raul Adolfo"){
 
@@ -108,6 +111,7 @@
   <label for="copas">N° Champions League</label>
   <input id="copas" type="number" [value]="englandTeam().championsLeague" (change)="actualizarEquipo($event)">
 
+
     <pre>
       <code>
         {{englandTeam() | json }}
@@ -123,5 +127,32 @@
 
   <p>El {{englandTeam().name}} no es Inglés o no ha ganado la Champios League</p>
 }
+
+<!-- Clase 15:  Uso de @Switch-->
+
+<h4>Usando switch de Angular  </h4>
+
+<label for="miEdad">Edad:</label>
+
+<input id="miEdad" type="text" [value]="edad()" (change)="actualizarEdad($event)">
+
+@switch (edad()) {
+  @case (17) {
+    <p>Eres menor de edad</p>
+  }
+  @case (18) {
+    <p>Felicidades, ya eres mayor de edad</p>
+  }
+  @case (20) {
+    <p>Con 20 años claro que puedes votar</p>
+  }
+  @default {
+    <p>No puedes ingresar</p>
+  }
+
+}
+
+
+
 
 
