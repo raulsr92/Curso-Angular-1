@@ -95,6 +95,8 @@
 @if ( firstName() == "Raul Adolfo"){
 
   <p> El nombre <span> {{firstName()}} </span> es el correcto </p>
+} @else {
+  El nombre no es el correcto
 }
 
 <h3>Formulario para actualizacion de if y else</h3>
@@ -105,6 +107,12 @@
   <input id="pais" type="text" [value]="englandTeam().country" (change)="actualizarEquipo($event)">
   <label for="copas">N° Champions League</label>
   <input id="copas" type="number" [value]="englandTeam().championsLeague" (change)="actualizarEquipo($event)">
+
+    <pre>
+      <code>
+        {{englandTeam() | json }}
+      </code>
+    </pre>
 
 
 @if (englandTeam().country == "Inglaterra" && englandTeam().championsLeague>0){
