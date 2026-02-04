@@ -149,10 +149,22 @@
   @default {
     <p>No puedes ingresar</p>
   }
-
 }
 
+<!-- Clase 16: Manejo avanzado de formularios reactivos en Angular-->
+
+<h4>Usando Formularios reactivos  </h4>
+
+<input id="color" type="color" [formControl]="colorCtrl">
+
+<p>Color: {{colorCtrl.value}}</p>
 
 
 
+<div class="mini-container">
+  <label for="correo">Ingrese su Nombre:</label>
+  <input type="text" name="" id="correo" [formControl]="nameCtrl">
+
+  <p>Nombre ingresado por la cajita de texto: {{nameCtrl.value}}</p>
+</div>
 
