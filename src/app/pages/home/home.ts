@@ -1,10 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Task } from '../../models/task.models';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
@@ -33,25 +34,40 @@ export class Home {
     }
   ]);
 
+  newTaskCtrl = new FormControl('',{
+    nonNullable: true,
+    validators: [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.pattern('^[a-zA-Z][a-zA-Z0-9 ]*$')
+    ]
+  });
 
-  changeHandler = (event: Event)=>{
+
+  changeHandler = ()=>{
 
     //Capturar tarea
-
-    const inputElement = event.target as HTMLInputElement
-    const newTask =inputElement.value
-
-    console.log(`Nueva tarea ingresada: ${newTask}`)
-
+    //const inputElement = event.target as HTMLInputElement
+    //const newTask =inputElement.value
+    //console.log(`Nueva tarea ingresada: ${newTask}`)
     // Agregar tarea al array de tareas (recuerda que es signal)
+    //Validación
 
-    this.addTask(newTask)
+    console.log(this.newTaskCtrl.errors)
+
+    if(this.newTaskCtrl.valid){   // true si pasa todas las validaciones.
+
+      const value = this.newTaskCtrl.value
+      this.addTask(value)
+    }
+
+    console.log(`Nueva tarea ingresada: ${this.newTaskCtrl.value}`)
 
     // Limpiar input
 
-    inputElement.value= ""
-
+    this.newTaskCtrl.setValue("");
   }
+
 
   addTask = (title:string) =>{
 
