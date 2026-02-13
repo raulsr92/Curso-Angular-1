@@ -38,3 +38,30 @@ span{
   /*border: 2px solid blue;*/
   background-color: cornflowerblue;
 }
+
+.message-error{
+  background-color: red;
+  color: white;
+  padding: 12px;
+  opacity: 0;
+  transition: all linear .5s;
+}
+
+.message-error.active{
+  opacity: 1;
+
+}
+
+.clase19-container{
+  display: flex;
+  width: 30%;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+input[type="text"]{
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid blue;
+  outline: 0;
+}

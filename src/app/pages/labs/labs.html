@@ -183,3 +183,20 @@
 
 </div>
 
+
+  <!-- Clase 19: Activacion dinámica de clases en Angular con validaciones -->
+
+  <div class="clase19-container">
+    <input type="text" [formControl]="name2Ctrl">
+
+    <!--Uso de @if para renderizar contenido de forma condicional -->
+
+    <span class="message-error" [class.active]= "name2Ctrl.invalid && name2Ctrl.touched"> Nombre inválido</span>
+
+
+
+    <input type="text" >
+
+  </div>
+
+

@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormControl, ReactiveFormsModule} from '@angular/forms';
+import { FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-labs',
@@ -64,6 +64,15 @@ tasks = [
   widthCtrl = new FormControl(50,{
     nonNullable: true,
   })
+
+  name2Ctrl = new FormControl(" ",{
+    nonNullable: true,
+    validators: [
+      Validators.required,
+      Validators.minLength(3),  /*Tamaño mínimo de un nomnre: 3 caracteres*/
+    ]
+  })
+
 
   constructor(){
     this.colorCtrl.valueChanges.subscribe( v =>{
