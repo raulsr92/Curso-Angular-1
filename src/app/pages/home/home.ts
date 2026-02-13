@@ -57,15 +57,19 @@ export class Home {
 
     if(this.newTaskCtrl.valid){   // true si pasa todas las validaciones.
 
-      const value = this.newTaskCtrl.value
-      this.addTask(value)
+      const value = this.newTaskCtrl.value.trim()
+
+      /*Validar que el texto no sea espacios en blanco*/
+
+      if (value.length >0) { //También funciona: value !==''  ---- NO funciona:  value !==' ' (con espacio entre comillas)
+        console.log("Es diferente de vacío")
+        this.addTask(value)
+        console.log(`Nueva tarea ingresada: ${this.newTaskCtrl.value}`)
+
+        // Limpiar input
+        this.newTaskCtrl.setValue("");
+      }
     }
-
-    console.log(`Nueva tarea ingresada: ${this.newTaskCtrl.value}`)
-
-    // Limpiar input
-
-    this.newTaskCtrl.setValue("");
   }
 
 

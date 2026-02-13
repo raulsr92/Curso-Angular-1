@@ -61,11 +61,16 @@ tasks = [
   colorCtrl = new FormControl();
   nameCtrl = new FormControl();
 
+  widthCtrl = new FormControl(50,{
+    nonNullable: true,
+  })
+
   constructor(){
     this.colorCtrl.valueChanges.subscribe( v =>{
       console.log(v)
     })
   }
+
 
 
 

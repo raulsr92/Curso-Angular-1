@@ -166,5 +166,20 @@
   <input type="text" name="" id="correo" [formControl]="nameCtrl">
 
   <p>Nombre ingresado por la cajita de texto: {{nameCtrl.value}}</p>
+
+  <!-- Clase 18: Estilos dinamicos en Angular-->
+
+  <svg>
+    <g>
+      <rect x="0" y="0" height="100" width="100" [attr.fill]="colorCtrl.value" />
+    </g>
+  </svg>
+
+  <hr/>
+
+  <input type="number" [formControl]="widthCtrl">
+
+  <span class="box" [style.width.px]="widthCtrl.value"> </span>
+
 </div>
 

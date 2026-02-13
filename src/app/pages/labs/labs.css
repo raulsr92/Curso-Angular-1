@@ -29,5 +29,12 @@
 span{
     color: rgb(36, 21, 255);
     font-weight: 600;
+}
 
+.box{
+  height: 120px;
+  /*width: 120px;*/  /*Esta propiedad la añadiremos con el form controler que hemos creado, de tal forma que sea EDITABLE*/
+  display: block;
+  /*border: 2px solid blue;*/
+  background-color: cornflowerblue;
 }
