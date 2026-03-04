@@ -109,6 +109,8 @@ export class Home {
     const inputElement = event.target as HTMLInputElement
     const statusChecked = inputElement.checked
 
+    console.log(statusChecked)
+
     //Actualizar tarea
 
     this.updateTask(index, statusChecked)

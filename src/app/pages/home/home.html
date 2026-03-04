@@ -15,20 +15,20 @@
   </header>
   <div class="container todoapp-wrapper">
     <!-- This section should be hidden by default and shown when there are todos -->
-    <!--
+
     <pre>
       <code>
         {{tasks2() | json }}
       </code>
     </pre>
--->
+
     <section class="main">
       <ul class="todo-list">
         @for (tareita of tasks2(); track $index){
-          <li>
+          <li >
             <div class="view">
               <input class="toggle" type="checkbox" (change)="changeCheck($event, $index)" [checked]="tareita.completed"/>
-              <label>{{tareita.title}}</label>
+              <label class="tarea" [class.completed]="tareita.completed">{{tareita.title}}</label>
               <button class="destroy" (click)="deleteTask($index)"></button>
             </div>
             <input class="edit" [value]="tareita" />
