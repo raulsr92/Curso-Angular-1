@@ -11,11 +11,14 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 })
 export class Home {
 
+
+
   tasks2 = signal<Task[]>([
     {
       id: Date.now(),
       title: "Instalar Angular CLI",
-      completed: false
+      completed: false,
+
     },
     {
       id: Date.now(),
@@ -117,5 +120,49 @@ export class Home {
 
     console.log(this.tasks2())
   }
+
+  updateTaskEditingMode = (index: number, event?: Event)=>{
+
+   this.tasks2.update((array)=>
+      array.map((tarea, indice)=> {
+        if(indice==index){
+          if (tarea.editing) { //si la tarea está en modo edición y hago ENTER
+            if(event) {  // si hay evento significa que el evento es keydown ENTER
+                 const inputElementEdited = event.target  as HTMLInputElement;
+                 const newTaskEdited = inputElementEdited.value
+
+                 console.log(newTaskEdited)
+                 return  { ...tarea, title: newTaskEdited,editing: false }
+            };
+            return { ...tarea, editing: false } //Cierra el modo de edición si es que no se cambió la tarea
+          } else{
+            return { ...tarea, editing: true } //Apertura la tarea en modo edición se se hizo DOBLE CLICK
+          }
+        } else{
+          return { ...tarea, editing: false } //Cierra el modo edición a las tareas, para evitar 2 tareas a la vez en modo edición
+        }
+      }
+     )
+    )
+  }
+
+/*
+  updateTaskAfterEditing = (event: Event, index: number)=>{
+
+    const inputElementEdited = event.target  as HTMLInputElement;
+    const newTaskEdited = inputElementEdited.value
+
+    console.log(newTaskEdited)
+
+    this.tasks2.update((array)=>
+
+      array.map ((tarea, indice) => {
+        return indice == index ? { ...tarea, title: newTaskEdited } : tarea
+      })
+
+    )
+
+  }
+    */
 }
 

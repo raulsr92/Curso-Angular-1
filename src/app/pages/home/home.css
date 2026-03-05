@@ -213,17 +213,20 @@
   color: #484848;
 }
 
-/*
+
+
+
 .todo-list li.completed label {
   color: #949494;
   text-decoration: line-through;
 }
-*/
 
+/*
 .tarea.completed{
   color: #f78888!important;
   text-decoration: line-through;
 }
+  */
 
 .todo-list li .destroy {
   display: none;

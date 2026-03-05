@@ -25,13 +25,15 @@
     <section class="main">
       <ul class="todo-list">
         @for (tareita of tasks2(); track $index){
-          <li >
+          <li (dblclick)="updateTaskEditingMode($index)"
+          [class.completed]="tareita.completed"
+          [class.editing]="tareita.editing">
             <div class="view">
               <input class="toggle" type="checkbox" (change)="changeCheck($event, $index)" [checked]="tareita.completed"/>
-              <label class="tarea" [class.completed]="tareita.completed">{{tareita.title}}</label>
+              <label class="tarea" >{{tareita.title}}</label>
               <button class="destroy" (click)="deleteTask($index)"></button>
             </div>
-            <input class="edit" [value]="tareita" />
+            <input class="edit" [value]="tareita.title" (keydown.enter)="updateTaskEditingMode($index, $event)"/>
           </li>
         }
 
