@@ -1,7 +1,10 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Task } from '../../models/task.models';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+
+type FilterType = 'all' | 'pending' | 'completed';
+
 
 @Component({
   selector: 'app-home',
@@ -9,9 +12,8 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
+
 export class Home {
-
-
 
   tasks2 = signal<Task[]>([
     {
@@ -45,6 +47,32 @@ export class Home {
       Validators.pattern('^[a-zA-Z][a-zA-Z0-9 ]*$')
     ]
   });
+
+
+  filter = signal<FilterType>('all')
+
+  taskByFilter = computed( () => {
+
+    //Leer filtro actual
+    const filter = this.filter();
+
+    //Leer listado de tareas total
+    const tasks = this.tasks2();
+
+    if (filter === 'pending') {  //si el filtro es igual a pending
+
+      return tasks.filter(task => !task.completed)
+    }
+    else if (filter === 'completed') {  //si el filtro es igual a "completed"
+
+      return tasks.filter(task => task.completed)
+    }
+    else{
+
+      return tasks
+    }
+  })
+
 
 
   changeHandler = ()=>{
@@ -136,7 +164,7 @@ export class Home {
             };
             return { ...tarea, editing: false } //Cierra el modo de edición si es que no se cambió la tarea
           } else{
-            return { ...tarea, editing: true } //Apertura la tarea en modo edición se se hizo DOBLE CLICK
+            return { ...tarea, editing: true } //Apertura la tarea en modo edición xq se hizo DOBLE CLICK
           }
         } else{
           return { ...tarea, editing: false } //Cierra el modo edición a las tareas, para evitar 2 tareas a la vez en modo edición
@@ -144,6 +172,12 @@ export class Home {
       }
      )
     )
+  }
+
+  changeFilter = (filter:FilterType) =>{
+
+    this.filter.set(filter)
+
   }
 
 /*
