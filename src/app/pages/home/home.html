@@ -75,11 +75,11 @@
       <span class="todo-count">
         <strong>
 
-             {{tasks2().length}}
+             {{taskByFilter().length}}
 
         </strong>
 
-          @if (tasks2().length<2){
+          @if (taskByFilter().length<2){
             item
           } @else {
             items
@@ -88,13 +88,14 @@
       <!-- Re(move this if you don't implement routing -->
       <ul class="filters">
         <li>
-          <a (click)="changeFilter('all')" class="selected">All</a>
+          <a></a>
+          <a (click)="changeFilter('all')" class="selected"  [class.selected]="filter()==='all'" > All</a>
         </li>
         <li>
-          <a (click)="changeFilter('pending')">Pending</a>
+          <a (click)="changeFilter('pending')"  [class.selected]="filter()==='pending'">Pending</a>
         </li>
         <li>
-          <a (click)="changeFilter('completed')" >Completed</a>
+          <a (click)="changeFilter('completed')" [class.selected]="filter()==='completed'">Completed</a>
         </li>
       </ul>
       <!-- Hidden if no completed items are left ↓ -->
