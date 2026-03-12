@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, effect, signal, inject, Injector } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Task } from '../../models/task.models';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -15,29 +15,8 @@ type FilterType = 'all' | 'pending' | 'completed';
 
 export class Home {
 
-  tasks2 = signal<Task[]>([
-    {
-      id: Date.now(),
-      title: "Instalar Angular CLI",
-      completed: false,
+  tasks2 = signal<Task[]>([]);
 
-    },
-    {
-      id: Date.now(),
-      title: "Crear proyecto",
-      completed: false
-    },
-    {
-      id: Date.now(),
-      title: "Crear componentes",
-      completed: false
-    },
-        {
-      id: Date.now(),
-      title: "Añadir signals",
-      completed: false
-    }
-  ]);
 
   newTaskCtrl = new FormControl('',{
     nonNullable: true,
@@ -73,7 +52,35 @@ export class Home {
     }
   })
 
+  injector = inject(Injector)
 
+  ngOnInit(){
+    //obtener tareas del localStorage
+    const storage = localStorage.getItem('ListaTareas')
+    console.log(storage)
+
+    if (storage) {
+      const tasks = JSON.parse(storage)
+      this.tasks2.set(tasks)
+    }
+    this.trackTasks();
+  }
+
+
+  trackTasks(){
+    //El effect va a hacer tracking cada vez que algo cambie
+    effect(()=>{
+      //Leer listado de tareas total
+      const tasks = this.tasks2();
+
+      console.log(tasks)
+      console.log('Running effect')
+
+      //Almacenar tareas en LocalStorage
+      localStorage.setItem('ListaTareas', JSON.stringify(tasks))
+
+    },{injector: this.injector})
+  }
 
   changeHandler = ()=>{
 
